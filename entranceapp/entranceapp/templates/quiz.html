@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>test</title>
+    </head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+        * {
+            margin: 0;
+            padding-left: 15px;
+            box-sizing: border-box
+        }
+
+        body {
+            background-color: #333
+        }
+
+        .container {
+            background-color: #555;
+            color: #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            padding-left: 40px;
+            font-family: 'Montserrat', sans-serif;
+            max-width: 900px
+        }
+
+        .container>p {
+            font-size: 32px
+        }
+
+        .question {
+            width: 75%
+        }
+
+        .options {
+            position: relative;
+            padding-left: 40px
+        }
+
+        #options label {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 14px;
+            cursor: pointer
+        }
+
+        .options input {
+            opacity: 0
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #555;
+            border: 1px solid #ddd;
+            border-radius: 50%
+        }
+
+        .options input:checked~.checkmark:after {
+            display: block
+        }
+
+        .options .checkmark:after {
+            content: "";
+            width: 10px;
+            height: 10px;
+            display: block;
+            background: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: 300ms ease-in-out 0s
+        }
+
+        .options input[type="radio"]:checked~.checkmark {
+            background: #21bf73;
+            transition: 300ms ease-in-out 0s
+        }
+
+        .options input[type="radio"]:checked~.checkmark:after {
+            transform: translate(-50%, -50%) scale(1)
+        }
+
+        .btn-primary {
+            background-color: #555;
+            color: #ddd;
+            border: 1px solid #ddd
+        }
+
+        .btn-primary:hover {
+            background-color: #21bf73;
+            border: 1px solid #21bf73
+        }
+
+        .btn-success {
+            padding: 5px 25px;
+            background-color: #21bf73
+        }
+
+        @media(max-width:576px) {
+            .question {
+                width: 100%;
+                word-spacing: 2px
+            }
+        }
+</style>
+<body>
+    <form action="" method="post">
+    <div class="container mt-sm-5 my-1">
+        <div class="question ml-sm-5 pl-sm-5 pt-2">
+        <div class="py-2 h5"><b>{{ques_ans[0]['question']}}</div>
+        <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options"> 
+            <label for="ans0" class="options">>{{ques_ans[0]['choice1']}}</label>
+            <input type="radio" id="ans0" name="ans0" value="option2"><span class="checkmark"></span> 
+            <label for="ans0" class="options">>{{ques_ans[0]['choice2']}}</label>
+            <input type="radio" id="ans0" name="ans0" value="option3"><span class="checkmark"></span> 
+            <label for="ans0" class="options">>{{ques_ans[0]['choice3']}}</label>
+            <input type="radio" id="ans0" name="ans0" value="option4"><span class="checkmark"></span> 
+            <label for="ans0" class="options">>{{ques_ans[0]['choice4']}}</label>
+        </div>
+        </div>
+    </div>
+        <br>
+    <div class="container mt-sm-5 my-1">
+        <div class="question ml-sm-5 pl-sm-5 pt-2">
+        <div class="py-2 h5">{{ques_ans[1]['question']}}</div>
+        <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options"> 
+            <input type="radio" id="ans1" name="ans1" value="option1"><span class="checkmark"></span> 
+            <label for="ans1" class="options">>{{ques_ans[1]['choice1']}}</label>
+            <input type="radio" id="ans1" name="ans1" value="option2"><span class="checkmark"></span> 
+            <label for="ans1" class="options">>{{ques_ans[1]['choice2']}}</label>
+            <input type="radio" id="ans1" name="ans1" value="option3"><span class="checkmark"></span> 
+            <label for="ans1" class="options">>{{ques_ans[1]['choice3']}}</label>
+            <input type="radio" id="ans1" name="ans1" value="option4"><span class="checkmark"></span> 
+            <label for="ans1" class="options">>{{ques_ans[1]['choice4']}}</label>
+        </div>
+        </div>
+    </div>
+        <br>
+    <div class="container mt-sm-5 my-1">
+        <div class="question ml-sm-5 pl-sm-5 pt-2">
+        <div class="py-2 h5">{{ques_ans[2]['question']}}</div>
+        <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options"> 
+        <input type="radio" id="ans2" name="ans2" value="option1">
+            <label for="ans2">{{ques_ans[2]['choice1']}}</label>
+            <input type="radio" id="ans2" name="ans2" value="option2">
+            <label for="ans2">{{ques_ans[2]['choice2']}}</label>
+            <input type="radio" id="ans2" name="ans2" value="option3">
+            <label for="ans2">{{ques_ans[2]['choice3']}}</label>
+            <input type="radio" id="ans2" name="ans2" value="option4">
+            <label for="ans2">{{ques_ans[2]['choice4']}}</label>
+            
+        </div>
+        </div>
+    </div><br>
+
+    <div class="container mt-sm-5 my-1">
+        <div class="question ml-sm-5 pl-sm-5 pt-2">
+        <div class="py-2 h5">{{ques_ans[3]['question']}}</div>
+        <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options"> 
+        <input type="radio" id="ans3" name="ans3" value="option1">
+        <label for="ans3">{{ques_ans[3]['choice1']}}</label>
+        <input type="radio" id="ans3" name="ans3" value="option2">
+        <label for="ans3">{{ques_ans[3]['choice2']}}</label>
+        <input type="radio" id="ans3" name="ans3" value="option3">
+        <label for="ans3">{{ques_ans[3]['choice3']}}</label>
+        <input type="radio" id="ans3" name="ans3" value="option4">
+        <label for="ans3">{{ques_ans[3]['choice4']}}</label>
+    </div>
+    </div>
+    </div><br>
+
+    <div class="container mt-sm-5 my-1">
+        <div class="question ml-sm-5 pl-sm-5 pt-2">
+        <div class="py-2 h5">{{ques_ans[4]['question']}}</div>
+        <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options"> 
+            <input type="radio" id="ans4" name="ans4" value="option1">
+            <label for="ans4">{{ques_ans[4]['choice1']}}</label>
+            <input type="radio" id="ans4" name="ans4" value="option2">
+            <label for="ans4">{{ques_ans[4]['choice1']}}</label>
+            <input type="radio" id="ans4" name="ans4" value="option3">
+            <label for="ans4">{{ques_ans[4]['choice3']}}</label>
+            <input type="radio" id="ans4" name="ans4" value="option4">
+            <label for="ans4">{{ques_ans[4]['choice4']}}</label>
+        </div>
+        </div>
+    </div><br>
+
+    <div class="container mt-sm-5 my-1">
+        <div class="question ml-sm-5 pl-sm-5 pt-2">
+        <div class="py-2 h5">{{ques_ans[5]['question']}}</div>
+        <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options"> 
+            <input type="radio" id="ans5" name="ans5" value="option1">
+            <label for="ans5">{{ques_ans[5]['choice1']}}</label>
+            <input type="radio" id="ans5" name="ans5" value="option2">
+            <label for="ans5">{{ques_ans[5]['choice2']}}</label>
+            <input type="radio" id="ans5" name="ans5" value="option3">
+            <label for="ans5">{{ques_ans[5]['choice3']}}</label>
+            <input type="radio" id="ans5" name="ans5" value="option4">
+            <label for="ans5">{{ques_ans[5]['choice4']}}</label>
+        </div>
+        </div>
+    </div><br>
+        
+    <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+

@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  db:
+    container_name: db-ecs
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: admin 
+      MYSQL_USER: root
+      MYSQL_PASSWORD: admin 
+      MYSQL_DATABASE: entrance_db
+    healthcheck:
+      test: "mysqladmin -u root -p$$MYSQL_ROOT_PASSWORD ping --protocol=tcp"
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+
+  web:
+    build: .
+    image: macrina/entrance-web
+    ports:
+      - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+

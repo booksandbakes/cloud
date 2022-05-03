@@ -1,0 +1,7 @@
+Flask==2.0.3
+Flask-MySQL==1.5.2
+mysql-connector-python==8.0.28
+pycparser==2.21
+PyMySQL==1.0.2
+Werkzeug==2.0.3
+SQLAlchemy==1.4.31

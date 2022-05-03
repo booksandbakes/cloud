@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>test</title>
+    </head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+        * {
+            margin: 0;
+            margin-left: 50px;
+            padding-top: 20px;
+            padding-right:20px;
+            box-sizing: border-box
+        }
+
+        body {
+            background-color: #333
+        }
+
+        .container {
+            background-color: #555;
+            color: #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            font-family: 'Montserrat', sans-serif;
+            max-width: 700px
+        }
+
+        .container>p {
+            font-size: 32px
+        }
+
+        .question {
+            width: 75%
+        }
+
+        .options {
+            position: relative;
+            padding-left: 80px
+        }
+
+        #options label {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 14px;
+            cursor: pointer
+        }
+
+        .options input {
+            opacity: 0
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            background-color: #555;
+            border: 1px solid #ddd;
+            border-radius: 75%
+        }
+
+        .options input:checked~.checkmark:after {
+            display: block
+        }
+
+        .options .checkmark:after {
+            content: "";
+            width: 10px;
+            height: 10px;
+            display: block;
+            background: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: 300ms ease-in-out 0s
+        }
+
+        .options input[type="radio"]:checked~.checkmark {
+            background: #21bf73;
+            transition: 300ms ease-in-out 0s
+        }
+
+        .options input[type="radio"]:checked~.checkmark:after {
+            transform: translate(-50%, -50%) scale(1)
+        }
+
+        .btn-primary {
+            background-color: #555;
+            color: #ddd;
+            border: 1px solid #ddd
+        }
+
+        .btn-primary:hover {
+            background-color: #21bf73;
+            border: 1px solid #21bf73
+        }
+
+        .btn-success {
+            padding: 5px 25px;
+            background-color: #21bf73
+        }
+
+        @media(max-width:576px) {
+            .question {
+                width: 100%;
+                word-spacing: 2px
+            }
+        }
+</style>
+    <body>
+        <form action="" method="post">
+        <div class="container mt-sm-5 my-1">
+			<div class="question ml-sm-5 pl-sm-5 pt-2">
+				<div class="py-2 h5"><b>Q. SELECT THE COURSE TO REGISTER</b></div>
+				<br/>
+				<div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options"> 
+                    
+                    <label class="options" for="course_option">NONE <input type="radio" id="course_option" name="course_option" value="option1"><span class="checkmark"></span> </label>
+                    
+                    <label class="options" for="course_option">{{courses_list[1]['course_name']}} <input type="radio" id="course_option" name="course_option" value="option2"><span class="checkmark"></span> </label>
+                    
+                    <label class="options" for="course_option">{{courses_list[2]['course_name']}} <input type="radio" id="course_option" name="course_option" value="option3"><span class="checkmark"></span> </label>
+                  
+                    <label class="options" for="course_option">{{courses_list[3]['course_name']}}  <input type="radio" id="course_option" name="course_option" value="option4"><span class="checkmark"></span> </label>
+                    <br>
+                    <br>
+				</div>
+			</div>
+			</div>
+			
+			<div class="d-flex align-items-center pt-3">
+				<div class="ml-auto mr-sm-5"> <input type= "submit" value ="Submit" class="btn btn-success"> </div>
+			</div>
+			</div>
+        </form>
+
+    </body>
+</html>
+
+<!--
+<form action="" method="post">
+    <p>SELECT THE COURSE TO REGISTER</p>
+    <input type="radio" id="course_option" name="course_option" value="option1">
+    <label for="course_option">NONE</label>
+    <input type="radio" id="course_option" name="course_option" value="option2">
+    <label for="course_option">{{courses_list[1]['course_name']}}</label>
+    <input type="radio" id="course_option" name="course_option" value="option3">
+    <label for="course_option">{{courses_list[2]['course_name']}}</label>
+    <input type="radio" id="course_option" name="course_option" value="option4">
+    <label for="course_option">{{courses_list[3]['course_name']}}</label>
+    <br>
+    <br>
+    <input type="submit" value="Submit">
+
+</form> 
+-->
